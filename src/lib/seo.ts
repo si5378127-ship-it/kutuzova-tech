@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { withBasePath } from "@/lib/paths";
 
 const defaultOgImage = "/og-default.png"; // TODO: add real OG image
 
@@ -12,7 +13,13 @@ type BuildMetadataInput = {
 
 export function absoluteUrl(path = "/"): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
+  // Metadata absolute URLs use the configured site origin (not github.io basePath).
   return `${siteConfig.url}${normalized === "/" ? "" : normalized}`;
+}
+
+/** Root-relative asset path that respects NEXT_PUBLIC_BASE_PATH on GitHub Pages. */
+export function publicAsset(path: string): string {
+  return withBasePath(path);
 }
 
 export function buildMetadata({

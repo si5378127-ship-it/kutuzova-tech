@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Article } from "@/content/pages";
+import { withBasePath } from "@/lib/paths";
 import { cn } from "@/lib/seo";
 
 type ArticleCardProps = {
@@ -9,12 +10,14 @@ type ArticleCardProps = {
 };
 
 export function ArticleCard({ article, className }: ArticleCardProps) {
+  const imageSrc = article.pinterestImage || article.coverImage || "";
+
   return (
     <article className={cn("surface-card soft-shadow overflow-hidden", className)}>
       <div className="relative aspect-[4/5] bg-bg-soft">
-        {article.coverImage || article.pinterestImage ? (
+        {imageSrc ? (
           <Image
-            src={article.pinterestImage || article.coverImage || ""}
+            src={imageSrc.startsWith("/") ? withBasePath(imageSrc) : imageSrc}
             alt={article.title}
             fill
             className="object-cover"

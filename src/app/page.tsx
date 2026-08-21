@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { StartProductCard } from "@/components/StartProductCard";
 import { TextLink } from "@/components/TextLink";
 import { brandHomeContent } from "@/content/brand-home";
+import { withBasePath } from "@/lib/paths";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -50,7 +51,7 @@ export default function BrandHomePage() {
             <figure className="relative mx-auto w-full max-w-[380px] md:mx-0 md:max-w-none md:justify-self-stretch">
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[24px] sm:aspect-[2/3]">
                 <Image
-                  src="/images/anastasia-kutuzova-hero.png"
+                  src={withBasePath("/images/anastasia-kutuzova-hero.png")}
                   alt="Анастасия Кутузова"
                   fill
                   priority
@@ -111,7 +112,7 @@ export default function BrandHomePage() {
           <figure className="relative mx-auto w-full max-w-[440px] lg:mx-0">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[22px]">
               <Image
-                src="/images/anastasia-about.jpg"
+                src={withBasePath("/images/anastasia-about.jpg")}
                 alt="Анастасия Кутузова"
                 fill
                 sizes="(max-width: 768px) 100vw, 440px"
