@@ -1,12 +1,10 @@
-# Deploy static site to GitHub Pages
+# Deploy static Next.js export to GitHub Pages from ./out
 #
-# Requirements in the GitHub repo:
+# Required once in the repo:
 # Settings → Pages → Build and deployment → Source: GitHub Actions
 #
-# For a project site (https://USER.github.io/REPO/):
-#   NEXT_PUBLIC_BASE_PATH is set automatically to "/REPO"
-# For a user site (https://USER.github.io/) or custom domain later:
-#   set repository variable BASE_PATH to empty string, or edit the env below.
+# If Source is "Deploy from a branch", GitHub will publish the repo root (README)
+# via the automatic "pages-build-deployment" workflow and this Action deploy will fail.
 
 name: Deploy to GitHub Pages
 
@@ -37,19 +35,23 @@ jobs:
           node-version: "20"
           cache: npm
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Install
         run: npm ci
 
       - name: Build static export
         run: npm run build
         env:
-          # Project Pages: /repo-name — change to "" for root user site / custom domain
-          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          # Required for https://USER.github.io/kutuzova-tech/
+          # Remove / set empty after custom domain is connected
+          NEXT_PUBLIC_BASE_PATH: /kutuzova-tech
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: ./out
 
   deploy:
     needs: build
