@@ -45,8 +45,31 @@ jobs:
         run: npm run build
         env:
           # Required for https://USER.github.io/kutuzova-tech/
-          # Remove / set empty after custom domain is connected
+          # Keep set while the site is served without a custom domain
           NEXT_PUBLIC_BASE_PATH: /kutuzova-tech
+
+      # GitHub Pages 301-redirects username.github.io/repo → custom domain
+      # whenever a CNAME file is published or Settings → Pages → Custom domain
+      # is set. The site must stay on github.io until the domain is restored.
+      - name: Strip custom-domain CNAME from static export
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -f public/CNAME out/CNAME
+          if [ -e out/CNAME ] || [ -e public/CNAME ]; then
+            echo "::error::CNAME must not be published while the site is served from github.io"
+            exit 1
+          fi
+          if grep -R -n -F "coach-kytuzova.ru" out; then
+            echo "::error::static export still references coach-kytuzova.ru"
+            exit 1
+          fi
+          cname="$(gh api "repos/${{ github.repository }}/pages" --jq '.cname // empty' || true)"
+          if [ -n "$cname" ]; then
+            echo "::error::GitHub Pages custom domain is still set to '$cname'. Clear Settings → Pages → Custom domain."
+            exit 1
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
