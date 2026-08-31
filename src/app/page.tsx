@@ -155,6 +155,7 @@ export default function BrandHomePage() {
                 product={{
                   id: product.id,
                   title: product.title,
+                  subtitle: "subtitle" in product ? product.subtitle : undefined,
                   description: product.description,
                   href: product.href,
                   ctaLabel: product.ctaLabel,

@@ -1,3 +1,5 @@
+import { boundariesTeaser } from "@/content/boundaries";
+
 /**
  * Content for the personal brand homepage (/).
  * Direction landings and product pages live on separate routes.
@@ -67,13 +69,13 @@ export const brandHomeContent = {
     title: "С чего можно начать",
     products: [
       {
-        id: "boundaries",
-        title: "Мои личные границы",
-        description:
-          "Мастер-класс для самостоятельной работы с темой личных границ.",
-        href: "/psychology",
-        ctaLabel: "Подробнее →",
-        direction: "psychology" as const,
+        id: boundariesTeaser.id,
+        title: boundariesTeaser.title,
+        subtitle: boundariesTeaser.subtitle,
+        description: boundariesTeaser.description,
+        href: boundariesTeaser.href,
+        ctaLabel: boundariesTeaser.ctaLabel,
+        direction: boundariesTeaser.direction,
       },
       {
         id: "audit",

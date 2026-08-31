@@ -6,6 +6,7 @@ export const dynamic = "force-static";
 const routes = [
   "/",
   "/psychology",
+  "/psychology/boundaries",
   "/art",
   "/sites",
   "/about",

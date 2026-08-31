@@ -4,6 +4,7 @@ import { cn } from "@/lib/seo";
 export type StartProduct = {
   id: string;
   title: string;
+  subtitle?: string;
   description: string;
   href: string;
   ctaLabel?: string;
@@ -29,6 +30,9 @@ export function StartProductCard({ product, className }: StartProductCardProps) 
     >
       {/* Optional direction tag can be added later via product.eyebrow */}
       <h3 className="heading-serif text-2xl text-ink">{product.title}</h3>
+      {product.subtitle ? (
+        <p className="mt-2 text-sm text-gold-muted">{product.subtitle}</p>
+      ) : null}
       <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-muted">
         {product.description}
       </p>

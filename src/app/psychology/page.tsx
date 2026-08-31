@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/SectionHeading";
+import { StartProductCard } from "@/components/StartProductCard";
 import { TextLink } from "@/components/TextLink";
+import { boundariesTeaser } from "@/content/boundaries";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -19,6 +21,9 @@ export default function PsychologyPage() {
           title="Психология и коучинг"
           description="Раздел в подготовке. Здесь появятся материалы об индивидуальной работе, коучинговых методах и программах для самостоятельной практики."
         />
+        <div className="mt-10 max-w-xl">
+          <StartProductCard product={boundariesTeaser} />
+        </div>
         <p className="mt-8 max-w-2xl text-sm leading-relaxed text-ink-dim">
           {/* TODO: expand psychology direction landing */}
           Пока можно вернуться на главную или посмотреть другие направления.

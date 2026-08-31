@@ -14,6 +14,7 @@ type CTAButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit";
   disabled?: boolean;
+  "aria-describedby"?: string;
 };
 
 const variants = {
@@ -37,6 +38,7 @@ export function CTAButton({
   onClick,
   type,
   disabled,
+  "aria-describedby": ariaDescribedBy,
 }: CTAButtonProps) {
   const classes = cn(
     "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors duration-200 focus-ring disabled:opacity-60 disabled:pointer-events-none",
@@ -51,7 +53,13 @@ export function CTAButton({
 
   if (type === "submit" || type === "button") {
     return (
-      <button type={type} className={classes} onClick={handleClick} disabled={disabled}>
+      <button
+        type={type}
+        className={classes}
+        onClick={handleClick}
+        disabled={disabled}
+        aria-describedby={ariaDescribedBy}
+      >
         {children}
       </button>
     );
