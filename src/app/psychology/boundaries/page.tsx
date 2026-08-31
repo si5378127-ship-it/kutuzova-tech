@@ -4,11 +4,14 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { boundariesContent as c } from "@/content/boundaries";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: c.meta.title,
+    description: c.meta.description,
+    path: c.meta.path,
+  }),
   title: c.meta.title,
-  description: c.meta.description,
-  path: c.meta.path,
-});
+};
 
 export default function BoundariesPracticumPage() {
   return (
