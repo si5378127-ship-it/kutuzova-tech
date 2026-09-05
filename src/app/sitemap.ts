@@ -10,6 +10,7 @@ const routes = [
   "/art",
   "/sites",
   "/about",
+  "/contact",
   "/audit",
   "/ai-assistants",
   "/blog",

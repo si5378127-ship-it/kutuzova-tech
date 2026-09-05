@@ -5,7 +5,7 @@ export const siteConfig = {
   tagline: "Психология, картины и сайты",
   description:
     "Анастасия Кутузова — психолог и коуч. Создаю авторские практики, картины и цифровые проекты. Помогаю находить ясность, новые возможности и форму для их воплощения.",
-  url: "https://kutuzova.tech", // TODO: confirm production domain
+  url: "https://coach-kytyzova.ru",
   locale: "ru_RU",
   author: {
     name: "Анастасия Кутузова",

@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
 
 /**
  * GitHub Pages serves only static files.
- * Set NEXT_PUBLIC_BASE_PATH for project pages, e.g. "/kutuzova-tech".
- * Leave empty for custom domain or username.github.io root site.
+ * Custom domain https://coach-kytyzova.ru/ is served from the site root —
+ * leave NEXT_PUBLIC_BASE_PATH empty. Set it only for a project-pages URL.
  */
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") || "";
 

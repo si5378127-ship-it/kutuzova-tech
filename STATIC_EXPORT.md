@@ -32,12 +32,14 @@
 
 ## Base path
 
-Project site `https://USER.github.io/REPO/`:
+Production is the custom domain `https://coach-kytyzova.ru/` (site root). Leave `NEXT_PUBLIC_BASE_PATH` empty:
+
+```bash
+npm run build
+```
+
+Only a project site `https://USER.github.io/REPO/` needs a prefix:
 
 ```bash
 NEXT_PUBLIC_BASE_PATH=/REPO npm run build
 ```
-
-Custom domain или root user site — оставьте пустым.
-
-Workflow уже подставляет `/${{ github.event.repository.name }}`.

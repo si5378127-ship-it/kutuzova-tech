@@ -1,7 +1,7 @@
 /**
- * Public asset paths for local (no prefix) and GitHub Pages project sites.
- * Uses NEXT_PUBLIC_BASE_PATH — same env as next.config.ts basePath.
- * Do not hardcode "/kutuzova-tech" in components.
+ * Public asset paths. Uses NEXT_PUBLIC_BASE_PATH — same env as next.config.ts.
+ * Empty on the custom-domain root (https://coach-kytyzova.ru/).
+ * Do not hardcode a repo prefix in components.
  */
 export function getBasePath(): string {
   return process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") || "";

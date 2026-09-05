@@ -13,11 +13,11 @@ type BuildMetadataInput = {
 
 export function absoluteUrl(path = "/"): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  // Metadata absolute URLs use the configured site origin (not github.io basePath).
+  // Metadata absolute URLs use the configured site origin.
   return `${siteConfig.url}${normalized === "/" ? "" : normalized}`;
 }
 
-/** Root-relative asset path that respects NEXT_PUBLIC_BASE_PATH on GitHub Pages. */
+/** Root-relative asset path that respects NEXT_PUBLIC_BASE_PATH when set. */
 export function publicAsset(path: string): string {
   return withBasePath(path);
 }

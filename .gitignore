@@ -17,10 +17,6 @@
 /.next/
 /out/
 
-# GitHub Pages custom domain (must not ship while using github.io)
-/public/CNAME
-/CNAME
-
 # production
 /build
 
