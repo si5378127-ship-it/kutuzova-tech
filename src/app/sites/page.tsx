@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { AuditStep } from "@/components/AuditStep";
 import { CaseCard } from "@/components/CaseCard";
 import { CTAButton } from "@/components/CTAButton";
@@ -11,6 +12,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SevenPointsGrid } from "@/components/SevenPointsGrid";
 import { homeContent } from "@/content/home";
 import { sevenPoints } from "@/content/seven-points";
+import { withBasePath } from "@/lib/paths";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -32,8 +34,18 @@ export default function SitesPage() {
         primaryCta={c.hero.primaryCta}
         secondaryCta={c.hero.secondaryCta}
       >
-        {/* TODO: replace with Anastasia portrait */}
-        <PortraitPlaceholder caption="Анастасия Кутузова" />
+        <figure className="relative">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.35rem]">
+            <Image
+              src={withBasePath("/images/anastasia-kutuzova-websites-ai.webp")}
+              alt="Анастасия Кутузова — разработка сайтов и ИИ-инструментов для частной практики"
+              fill
+              priority
+              sizes="(max-width: 1024px) 320px, 360px"
+              className="object-cover object-[center_18%]"
+            />
+          </div>
+        </figure>
       </Hero>
 
       <section className="bg-bg py-16 sm:py-20">
