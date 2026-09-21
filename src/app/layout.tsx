@@ -35,6 +35,9 @@ export const metadata: Metadata = {
     default: `${siteConfig.name} — психология, картины и сайты`,
     template: `%s | ${siteConfig.name}`,
   },
+  verification: {
+    yandex: "54ca3eec65e2144e",
+  },
 };
 
 export default function RootLayout({
