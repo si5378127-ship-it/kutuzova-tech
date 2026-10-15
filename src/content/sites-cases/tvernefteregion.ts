@@ -61,18 +61,37 @@ export const tvernefteregionCase: SitesCase = {
   siteVisualCompare: {
     title: "Сайт до и после",
     description:
-      "Слева — предыдущая версия на Tilda. Справа — актуальный сайт после переработки.",
+      "Слева — главная страница прежнего сайта на Tilda. Справа — актуальный сайт после переработки.",
     before: {
       id: "old-tilda",
-      label: "Старый сайт на Tilda",
-      caption: "Предыдущая версия сайта на Tilda.",
-      // src будет добавлен после передачи скриншотов старого сайта
+      label: "Старый сайт на Tilda — главная",
+      caption: "Главная страница прежней версии на Tilda.",
+      src: "/images/cases/tvernefteregion/old-site-home.webp",
     },
     after: {
       id: "new-site",
-      label: "Новый сайт ТверьНефтеРегион",
+      label: "Новый сайт ТверьНефтеРегион — главная",
       caption: "Главная страница после запуска.",
       src: "/images/cases/tvernefteregion/new-site-home.webp",
+    },
+  },
+  formVisualCompare: {
+    title: "Форма заявки до и после",
+    description:
+      "Слева — прежняя форма: данные уходили на email, покупатель ждал ответа. Справа — финальный экран новой формы: готовый текст запроса и переход в MAX, где клиент сам отправляет сообщение.",
+    before: {
+      id: "old-form",
+      label: "Старая форма заявки на Tilda",
+      caption:
+        "Калькулятор расчёта топлива с кнопкой «Отправить» — заявка уходила на email компании.",
+      src: "/images/cases/tvernefteregion/old-site-form.webp",
+    },
+    after: {
+      id: "new-form-final",
+      label: "Новая форма — готовый запрос и переход в MAX",
+      caption:
+        "Финальный экран: параметры собраны в текст запроса, дальше клиент сам пишет менеджеру в MAX.",
+      src: "/images/cases/tvernefteregion/form-final.webp",
     },
   },
   highlightExample: {

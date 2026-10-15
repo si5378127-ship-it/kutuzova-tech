@@ -4,18 +4,20 @@ import type { SiteVisualCompare as SiteVisualCompareType } from "@/content/sites
 
 type SiteVisualCompareProps = {
   compare: SiteVisualCompareType;
+  eyebrow?: string;
   className?: string;
 };
 
 export function SiteVisualCompare({
   compare,
+  eyebrow = "Внешний вид",
   className,
 }: SiteVisualCompareProps) {
   return (
     <div className={cn(className)}>
       <div className="max-w-3xl">
         <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold-muted">
-          Внешний вид
+          {eyebrow}
         </p>
         <h2 className="heading-serif mt-4 text-3xl text-ink sm:text-4xl">
           {compare.title}
@@ -28,13 +30,13 @@ export function SiteVisualCompare({
       </div>
 
       <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <div>
+        <div className="min-w-0">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-gold-muted">
             До
           </p>
           <CaseMediaSlot slot={compare.before} allowNeutralEmpty />
         </div>
-        <div>
+        <div className="min-w-0">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-gold">
             После
           </p>

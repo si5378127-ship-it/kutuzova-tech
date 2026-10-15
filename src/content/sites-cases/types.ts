@@ -99,6 +99,8 @@ export type SitesCase = {
   inquiryFlow?: InquiryFlowCompare;
   /** Optional website before/after visuals */
   siteVisualCompare?: SiteVisualCompare;
+  /** Optional form before/after visuals for the inquiry scenario */
+  formVisualCompare?: SiteVisualCompare;
   highlightExample?: CaseHighlightExample;
   delivery: {
     title: string;

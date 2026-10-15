@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { withBasePath } from "@/lib/paths";
+import { ZoomableImage } from "@/components/ZoomableImage";
 import { cn } from "@/lib/seo";
 import type { CaseMediaSlot as CaseMediaSlotType } from "@/content/sites-cases/types";
 
@@ -11,16 +10,19 @@ type CaseMediaSlotProps = {
    * frame without instructional copy. Default: hide the slot entirely.
    */
   allowNeutralEmpty?: boolean;
+  /** object-position utility for the thumbnail */
+  objectPosition?: string;
 };
 
 /**
  * Renders a real image when available and cleared for publishing.
- * Never invents imagery or shows “placeholder screenshot” labels to visitors.
+ * Click opens a larger lightbox view. Never invents imagery.
  */
 export function CaseMediaSlot({
   slot,
   className,
   allowNeutralEmpty = false,
+  objectPosition = "object-top",
 }: CaseMediaSlotProps) {
   const canShowImage = Boolean(slot.src) && !slot.privacyHold;
 
@@ -32,12 +34,11 @@ export function CaseMediaSlot({
     <figure className={cn("overflow-hidden", className)}>
       <div className="relative aspect-[16/10] overflow-hidden rounded-[1.25rem] bg-bg-soft">
         {canShowImage && slot.src ? (
-          <Image
-            src={slot.src.startsWith("/") ? withBasePath(slot.src) : slot.src}
+          <ZoomableImage
+            src={slot.src}
             alt={slot.label}
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="absolute inset-0"
+            objectPosition={objectPosition}
           />
         ) : (
           <div

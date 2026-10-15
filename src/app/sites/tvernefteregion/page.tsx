@@ -76,8 +76,19 @@ export default function TvernefteregionCasePage() {
         </section>
       ) : null}
 
-      {c.highlightExample ? (
+      {c.formVisualCompare ? (
         <section className="bg-bg-alt py-16 sm:py-24">
+          <div className="container-page">
+            <SiteVisualCompare
+              compare={c.formVisualCompare}
+              eyebrow="Сценарий заявки"
+            />
+          </div>
+        </section>
+      ) : null}
+
+      {c.highlightExample ? (
+        <section className="bg-bg py-16 sm:py-24">
           <div className="container-narrow">
             <aside className="panel-light p-6 sm:p-10">
               <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold-muted">
@@ -98,7 +109,7 @@ export default function TvernefteregionCasePage() {
       ) : null}
 
       {c.siteVisualCompare ? (
-        <section className="bg-bg py-16 sm:py-24">
+        <section className="bg-bg-alt py-16 sm:py-24">
           <div className="container-page">
             <SiteVisualCompare compare={c.siteVisualCompare} />
           </div>
