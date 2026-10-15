@@ -28,7 +28,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="focus-ring inline-flex min-h-11 items-center text-sm text-ink-muted transition-colors hover:text-ink"
+                    className="focus-ring flex min-h-11 items-center text-sm text-ink-muted transition-colors hover:text-ink"
                   >
                     {item.label}
                   </Link>
@@ -48,7 +48,7 @@ export function Footer() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="focus-ring inline-flex min-h-11 items-center text-sm text-ink-muted transition-colors hover:text-ink"
+                    className="focus-ring flex min-h-11 items-center text-sm text-ink-muted transition-colors hover:text-ink"
                     aria-label={`${item.label} (откроется в новой вкладке)`}
                   >
                     {item.shortLabel ?? item.label}
@@ -67,7 +67,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="focus-ring inline-flex min-h-11 items-center text-sm text-ink-muted transition-colors hover:text-ink"
+                    className="focus-ring flex min-h-11 items-center text-sm text-ink-muted transition-colors hover:text-ink"
                   >
                     {item.label}
                   </Link>
