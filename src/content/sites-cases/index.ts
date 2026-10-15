@@ -1,7 +1,12 @@
 import { tvernefteregionCase } from "./tvernefteregion";
 import type { SitesCase } from "./types";
 
-export type { SitesCase, SitesCaseCard, CaseMediaSlot } from "./types";
+export type {
+  SitesCase,
+  SitesCaseCard,
+  CaseMediaSlot,
+  SiteVisualCompare,
+} from "./types";
 
 /** Published sites portfolio cases — add new entries here. */
 export const sitesCases: readonly SitesCase[] = [tvernefteregionCase];

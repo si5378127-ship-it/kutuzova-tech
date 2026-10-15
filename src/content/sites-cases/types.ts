@@ -10,10 +10,10 @@ export type CaseCta = {
 
 export type CaseMediaSlot = {
   id: string;
-  /** Visible label for the reserved slot / future alt text */
+  /** Alt text / internal label when image is published */
   label: string;
   /** Caption under the image when published */
-  caption: string;
+  caption?: string;
   /**
    * Path under public/ when the asset is ready.
    * Leave undefined until a real file exists — never invent imagery.
@@ -44,6 +44,14 @@ export type InquiryFlowCompare = {
   sendDisclaimer: string;
 };
 
+/** Optional visual before/after of the website itself */
+export type SiteVisualCompare = {
+  title: string;
+  description?: string;
+  before: CaseMediaSlot;
+  after: CaseMediaSlot;
+};
+
 export type CaseHighlightExample = {
   title: string;
   text: string;
@@ -61,10 +69,8 @@ export type CaseResultItem = {
 export type SitesCaseCard = {
   title: string;
   industry: string;
-  challenge: string;
-  work: string;
-  /** Short factual outcome for the card; optional until confirmed */
-  result?: string;
+  /** Short preview line for portfolio grids */
+  summary: string;
   imageSrc?: string;
   imageAlt?: string;
 };
@@ -91,6 +97,8 @@ export type SitesCase = {
   };
   /** Optional — only when a previous flow/site comparison exists */
   inquiryFlow?: InquiryFlowCompare;
+  /** Optional website before/after visuals */
+  siteVisualCompare?: SiteVisualCompare;
   highlightExample?: CaseHighlightExample;
   delivery: {
     title: string;
@@ -101,6 +109,7 @@ export type SitesCase = {
     description?: string;
     items: readonly CaseResultItem[];
   };
+  /** Only include assets that are ready to show (or explicitly held) */
   media: readonly CaseMediaSlot[];
   card: SitesCaseCard;
   finalCta: {

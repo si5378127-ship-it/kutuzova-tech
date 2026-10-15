@@ -3,6 +3,7 @@ import { CaseMediaSlot } from "@/components/CaseMediaSlot";
 import { CTAButton } from "@/components/CTAButton";
 import { InquiryFlowCompare } from "@/components/InquiryFlowCompare";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SiteVisualCompare } from "@/components/SiteVisualCompare";
 import { TextLink } from "@/components/TextLink";
 import { tvernefteregionCase as c } from "@/content/sites-cases";
 import { buildMetadata, cn } from "@/lib/seo";
@@ -14,6 +15,10 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function TvernefteregionCasePage() {
+  const visibleMedia = c.media.filter(
+    (slot) => Boolean(slot.src) && !slot.privacyHold,
+  );
+
   return (
     <>
       <section className="bg-bg pt-10 pb-16 sm:pt-16 sm:pb-24">
@@ -92,6 +97,32 @@ export default function TvernefteregionCasePage() {
         </section>
       ) : null}
 
+      {c.siteVisualCompare ? (
+        <section className="bg-bg py-16 sm:py-24">
+          <div className="container-page">
+            <SiteVisualCompare compare={c.siteVisualCompare} />
+          </div>
+        </section>
+      ) : null}
+
+      {visibleMedia.length > 0 ? (
+        <section className="bg-bg-alt py-16 sm:py-24">
+          <div className="container-page">
+            <SectionHeading
+              as="h2"
+              title="Новая форма заявки"
+              description="Три шага с параметрами поставки и финальный экран с готовым текстом запроса и переходом в MAX."
+              className="mb-10"
+            />
+            <div className="grid gap-8 sm:grid-cols-2">
+              {visibleMedia.map((slot) => (
+                <CaseMediaSlot key={slot.id} slot={slot} />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="bg-bg py-16 sm:py-24">
         <div className="container-page">
           <SectionHeading as="h2" title={c.delivery.title} className="mb-10" />
@@ -144,23 +175,7 @@ export default function TvernefteregionCasePage() {
         </div>
       </section>
 
-      <section className="bg-bg py-16 sm:py-24">
-        <div className="container-page">
-          <SectionHeading
-            as="h2"
-            title="Материалы проекта"
-            description="Слоты под реальные изображения. Файлы будут добавлены отдельно; скрин переписки в MAX не публикуется до проверки конфиденциальности и разрешения."
-            className="mb-10"
-          />
-          <div className="grid gap-8 sm:grid-cols-2">
-            {c.media.map((slot) => (
-              <CaseMediaSlot key={slot.id} slot={slot} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-bg-alt py-20 sm:py-28">
+      <section className="bg-bg py-20 sm:py-28">
         <div className="container-narrow text-center">
           <h2 className="heading-serif text-balance text-3xl text-ink sm:text-4xl">
             {c.finalCta.title}

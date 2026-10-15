@@ -27,9 +27,7 @@ export default function CasesPage() {
               key={item.id}
               title={item.card.title}
               industry={item.card.industry}
-              challenge={item.card.challenge}
-              work={item.card.work}
-              result={item.card.result}
+              summary={item.card.summary}
               imageSrc={item.card.imageSrc}
               imageAlt={item.card.imageAlt}
               detailsHref={`/sites/${item.slug}/`}

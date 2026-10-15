@@ -6,18 +6,31 @@ import type { CaseMediaSlot as CaseMediaSlotType } from "@/content/sites-cases/t
 type CaseMediaSlotProps = {
   slot: CaseMediaSlotType;
   className?: string;
+  /**
+   * When true and there is no publishable image, render a quiet neutral
+   * frame without instructional copy. Default: hide the slot entirely.
+   */
+  allowNeutralEmpty?: boolean;
 };
 
 /**
  * Renders a real image when available and cleared for publishing.
- * Otherwise shows a labeled reserved placeholder — never invented imagery.
+ * Never invents imagery or shows “placeholder screenshot” labels to visitors.
  */
-export function CaseMediaSlot({ slot, className }: CaseMediaSlotProps) {
+export function CaseMediaSlot({
+  slot,
+  className,
+  allowNeutralEmpty = false,
+}: CaseMediaSlotProps) {
   const canShowImage = Boolean(slot.src) && !slot.privacyHold;
 
+  if (!canShowImage && !allowNeutralEmpty) {
+    return null;
+  }
+
   return (
-    <figure className={cn("overflow-hidden rounded-[1.25rem]", className)}>
-      <div className="relative aspect-[16/10] bg-bg-soft">
+    <figure className={cn("overflow-hidden", className)}>
+      <div className="relative aspect-[16/10] overflow-hidden rounded-[1.25rem] bg-bg-soft">
         {canShowImage && slot.src ? (
           <Image
             src={slot.src.startsWith("/") ? withBasePath(slot.src) : slot.src}
@@ -27,29 +40,17 @@ export function CaseMediaSlot({ slot, className }: CaseMediaSlotProps) {
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         ) : (
-          <div className="flex h-full flex-col items-center justify-center gap-2 px-6 text-center">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-gold-muted">
-              Место для изображения
-            </p>
-            <p className="max-w-xs text-sm leading-relaxed text-ink-muted">
-              {slot.label}
-            </p>
-            {slot.privacyHold ? (
-              <p className="mt-1 max-w-sm text-xs leading-relaxed text-ink-dim">
-                Слот зарезервирован. Публикация после проверки
-                конфиденциальности и разрешения на использование.
-              </p>
-            ) : (
-              <p className="mt-1 max-w-sm text-xs leading-relaxed text-ink-dim">
-                Реальный файл будет добавлен отдельно — без подставных картинок.
-              </p>
-            )}
-          </div>
+          <div
+            className="h-full w-full bg-gradient-to-br from-bg-soft via-bg-alt to-bg-soft"
+            aria-hidden
+          />
         )}
       </div>
-      <figcaption className="mt-3 text-sm leading-relaxed text-ink-muted">
-        {slot.caption}
-      </figcaption>
+      {canShowImage && slot.caption ? (
+        <figcaption className="mt-3 text-sm leading-relaxed text-ink-muted">
+          {slot.caption}
+        </figcaption>
+      ) : null}
     </figure>
   );
 }
