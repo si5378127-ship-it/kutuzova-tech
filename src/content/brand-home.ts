@@ -113,12 +113,11 @@ export const brandHomeContent = {
     items: [
       {
         id: "oil-site",
-        title: "Сайт для нефтяной компании",
+        title: "ТверьНефтеРегион",
         category: "Сайты",
         summary:
-          "Структура, содержание и поисковая понятность корпоративного сайта.",
-        // TODO: add confirmed company name, screenshots and results
-        href: undefined as string | undefined,
+          "Путь заявки изменён: форма готовит текст запроса, клиент сам отправляет его в MAX и может сразу начать диалог — без ожидания письма.",
+        href: "/sites/tvernefteregion" as string | undefined,
       },
       {
         id: "project-placeholder-2",

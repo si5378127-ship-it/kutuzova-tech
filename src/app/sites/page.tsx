@@ -11,6 +11,7 @@ import { ProductCard, RouteCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SevenPointsGrid } from "@/components/SevenPointsGrid";
 import { homeContent } from "@/content/home";
+import { sitesCases } from "@/content/sites-cases";
 import { sevenPoints } from "@/content/seven-points";
 import { withBasePath } from "@/lib/paths";
 import { buildMetadata } from "@/lib/seo";
@@ -230,13 +231,21 @@ export default function SitesPage() {
             description={c.cases.text}
             className="mb-10"
           />
-          <CaseCard
-            title="Сайт для нефтяной компании"
-            industry="Корпоративный сайт"
-            challenge="Сделать сайт понятным человеку и поисковым системам."
-            work="Структура, содержание и поисковая понятность."
-            // TODO: add confirmed company name, query, screenshots and results
-          />
+          <div className="grid gap-6 lg:grid-cols-2">
+            {sitesCases.map((item) => (
+              <CaseCard
+                key={item.id}
+                title={item.card.title}
+                industry={item.card.industry}
+                challenge={item.card.challenge}
+                work={item.card.work}
+                result={item.card.result}
+                imageSrc={item.card.imageSrc}
+                imageAlt={item.card.imageAlt}
+                detailsHref={`/sites/${item.slug}/`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 

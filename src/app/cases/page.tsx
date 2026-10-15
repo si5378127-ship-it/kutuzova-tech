@@ -1,29 +1,45 @@
 import type { Metadata } from "next";
 import { CaseCard } from "@/components/CaseCard";
-import { StubPage } from "@/components/StubPage";
-import { pageStubs } from "@/content/pages";
+import { SectionHeading } from "@/components/SectionHeading";
+import { TextLink } from "@/components/TextLink";
+import { sitesCases } from "@/content/sites-cases";
 import { buildMetadata } from "@/lib/seo";
 
-const page = pageStubs.cases;
-
 export const metadata: Metadata = buildMetadata({
-  title: page.title,
-  description: page.description,
+  title: "Кейсы",
+  description:
+    "Примеры работы со структурой, текстами, путём заявки и поисковой понятностью сайтов.",
   path: "/cases",
 });
 
 export default function CasesPage() {
   return (
-    <StubPage title={page.title} description={page.description} body={page.body}>
-      <div className="mt-10 max-w-2xl">
-        <CaseCard
-          title="Сайт для нефтяной компании"
-          industry="Корпоративный сайт"
-          challenge="Сделать сайт понятным человеку и поисковым системам."
-          work="Структура, содержание и поисковая понятность."
-          // TODO: add confirmed company name, query, screenshots and results
+    <section className="bg-bg py-16 sm:py-24">
+      <div className="container-page">
+        <SectionHeading
+          as="h1"
+          title="Кейсы"
+          description="Подтверждённые проекты — без выдуманных цифр посещаемости и продаж. Главный акцент: как меняется путь клиента от интереса до разговора с менеджером."
         />
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          {sitesCases.map((item) => (
+            <CaseCard
+              key={item.id}
+              title={item.card.title}
+              industry={item.card.industry}
+              challenge={item.card.challenge}
+              work={item.card.work}
+              result={item.card.result}
+              imageSrc={item.card.imageSrc}
+              imageAlt={item.card.imageAlt}
+              detailsHref={`/sites/${item.slug}/`}
+            />
+          ))}
+        </div>
+        <div className="mt-10">
+          <TextLink href="/sites/">Смотреть раздел сайтов →</TextLink>
+        </div>
       </div>
-    </StubPage>
+    </section>
   );
 }

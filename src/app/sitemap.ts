@@ -10,6 +10,7 @@ const routes = [
   "/gde-ya",
   "/art",
   "/sites",
+  "/sites/tvernefteregion",
   "/about",
   "/contact",
   "/audit",
