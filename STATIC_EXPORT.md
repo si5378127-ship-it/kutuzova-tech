@@ -9,6 +9,7 @@
 Все основные HTML-маршруты и изображения из `public/`, в том числе:
 
 - `/`, `/sites/`, `/audit/`, `/psychology/`, `/art/`, `/about/`, `/contact/`
+- `/gde-ya/` — интерактивная практика (статика из `public/gde-ya/`)
 - `/images/anastasia-kutuzova-hero.png`
 - `/images/anastasia-about.jpg`
 
@@ -43,3 +44,19 @@ Only a project site `https://USER.github.io/REPO/` needs a prefix:
 ```bash
 NEXT_PUBLIC_BASE_PATH=/REPO npm run build
 ```
+
+## Практика `/gde-ya/`
+
+Интерактивная практика «А где в своей жизни сейчас Я?» лежит как
+готовый Vite-build в `public/gde-ya/` и публикуется на
+https://coach-kytyzova.ru/gde-ya/.
+
+Исходники: https://github.com/si5378127-ship-it/gde-ya-practice  
+(репозиторий и его GitHub Pages не удалять).
+
+Чтобы обновить практику:
+
+1. В репозитории практики выставить `practiceUrl` на
+   `https://coach-kytyzova.ru/gde-ya/` и выполнить `npm run build`.
+2. Заменить содержимое `public/gde-ya/` файлами из `dist/`.
+3. Собрать и задеплоить основной сайт.

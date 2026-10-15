@@ -7,6 +7,7 @@ const routes = [
   "/",
   "/psychology",
   "/psychology/boundaries",
+  "/gde-ya",
   "/art",
   "/sites",
   "/about",
