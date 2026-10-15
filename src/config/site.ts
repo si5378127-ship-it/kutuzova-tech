@@ -11,6 +11,5 @@ export const siteConfig = {
     name: "Анастасия Кутузова",
     role: "Психолог и коуч, создатель авторских практик, картин и цифровых проектов",
   },
-  // TODO: add contact email when provided
-  // TODO: add social profiles when provided
+  // Social and messaging links: see src/content/contacts.ts
 } as const;

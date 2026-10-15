@@ -9,7 +9,6 @@ export const footerNav = [...mainNav] as const;
 
 export const legalNav = [
   { label: "Политика конфиденциальности", href: "/privacy" },
-  // TODO: enable when contacts page content is ready — currently a soft stub
   { label: "Контакты", href: "/contact" },
 ] as const;
 
