@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { StartProductCard } from "@/components/StartProductCard";
 import { TextLink } from "@/components/TextLink";
 import { boundariesTeaser } from "@/content/boundaries";
+import { magicArtTeaser } from "@/content/magic-art";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -42,7 +43,8 @@ export default function PsychologyPage() {
             </a>
           </div>
         </aside>
-        <div className="mt-10 max-w-xl">
+        <div className="mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+          <StartProductCard product={magicArtTeaser} />
           <StartProductCard product={boundariesTeaser} />
         </div>
         <p className="mt-8 max-w-2xl text-sm leading-relaxed text-ink-dim">
