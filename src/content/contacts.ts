@@ -32,14 +32,14 @@ export const socialChannels = [
     href: "https://max.ru/id690102035976_biz",
   },
   {
-    label: "ВКонтакте",
-    shortLabel: "ВКонтакте",
-    href: "https://vk.ru/psychologist_kutuzova",
+    label: "ВКонтакте — личная страница",
+    shortLabel: "ВК · личная",
+    href: "https://vk.ru/kutuzova_mind",
   },
   {
-    label: "ВКонтакте — дополнительная страница",
-    shortLabel: "ВКонтакте (доп.)",
-    href: "https://vk.ru/kutuzova_mind",
+    label: "ВКонтакте — сообщество",
+    shortLabel: "ВК · сообщество",
+    href: "https://vk.ru/psychologist_kutuzova",
   },
   {
     label: "YouTube",
