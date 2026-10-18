@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     "интегративное рисование",
     "Magic Art психолог",
     "индивидуальная сессия рисование",
+    "Magic Art онлайн",
   ],
 };
 
@@ -43,6 +44,9 @@ export default function MagicArtSessionPage() {
               </p>
               <p className="heading-serif mt-2 text-4xl text-green-deep sm:text-5xl">
                 {c.hero.price}
+              </p>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
+                {c.hero.format}
               </p>
             </div>
             <TelegramBookingButton
@@ -123,34 +127,20 @@ export default function MagicArtSessionPage() {
         </div>
       </section>
 
-      {/* 5. About */}
+      {/* 5. About — no empty certificate placeholder */}
       <section className="bg-bg py-16 sm:py-24">
-        <div className="container-page grid items-start gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-          <div>
-            <SectionHeading as="h2" title={c.about.title} />
-            <div className="mt-10 space-y-6">
-              {c.about.paragraphs.map((paragraph) => (
-                <p
-                  key={paragraph}
-                  className="max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+        <div className="container-narrow">
+          <SectionHeading as="h2" title={c.about.title} />
+          <div className="mt-10 space-y-6">
+            {c.about.paragraphs.map((paragraph) => (
+              <p
+                key={paragraph}
+                className="max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg"
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
-          <aside className="panel-light p-6 sm:p-8">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold-muted">
-              {c.about.certificate.label}
-            </p>
-            <div
-              className="mt-5 aspect-[4/3] rounded-[1.1rem] bg-gradient-to-br from-bg-soft via-bg to-bg-soft"
-              aria-hidden
-            />
-            <p className="mt-4 text-sm leading-relaxed text-ink-dim">
-              {c.about.certificate.caption}
-            </p>
-          </aside>
         </div>
       </section>
 
