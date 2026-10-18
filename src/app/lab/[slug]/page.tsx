@@ -47,6 +47,11 @@ export default async function LabProjectDetailPage({ params }: PageProps) {
   if (!project?.detail) notFound();
 
   const { detail } = project;
+  const ctaLabel = project.ctaLabel ?? "Посмотреть проект";
+  const external = /^https?:\/\//i.test(project.projectUrl);
+  const projectHref = external
+    ? project.projectUrl
+    : withBasePath(project.projectUrl);
 
   return (
     <>
@@ -55,7 +60,7 @@ export default async function LabProjectDetailPage({ params }: PageProps) {
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-gold-muted">
             Лаборатория · {project.typeLabel}
           </p>
-          <h1 className="heading-serif max-w-[18ch] text-balance text-[2rem] leading-[1.15] text-ink sm:text-4xl">
+          <h1 className="heading-serif max-w-[20ch] text-balance text-[2rem] leading-[1.15] text-ink sm:text-4xl">
             {project.title}
           </h1>
           {project.statusLabel ? (
@@ -66,12 +71,13 @@ export default async function LabProjectDetailPage({ params }: PageProps) {
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={projectHref}
+              {...(external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               className="focus-ring cta-primary inline-flex min-h-11 items-center justify-center rounded-full bg-[#173126] px-6 text-sm font-medium text-[#F7F2E9] transition-colors hover:bg-[#23382D]"
             >
-              Посмотреть проект
+              {ctaLabel}
             </a>
             <TextLink href="/lab/">← Все проекты лаборатории</TextLink>
           </div>
@@ -144,12 +150,13 @@ export default async function LabProjectDetailPage({ params }: PageProps) {
 
           <div className="flex flex-wrap gap-6">
             <a
-              href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={projectHref}
+              {...(external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               className="focus-ring text-sm font-medium text-gold-muted underline-offset-4 hover:underline"
             >
-              Открыть живую версию →
+              {ctaLabel} →
             </a>
             <TextLink href="/lab/">К лаборатории</TextLink>
             <TextLink href="/sites/">Клиентские кейсы и услуги</TextLink>

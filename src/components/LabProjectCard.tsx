@@ -7,8 +7,17 @@ type LabProjectCardProps = {
   project: LabProject;
 };
 
+function isExternalUrl(url: string): boolean {
+  return /^https?:\/\//i.test(url);
+}
+
 export function LabProjectCard({ project }: LabProjectCardProps) {
   const detailHref = project.detail ? `/lab/${project.slug}/` : undefined;
+  const ctaLabel = project.ctaLabel ?? "Посмотреть проект";
+  const external = isExternalUrl(project.projectUrl);
+  const href = external
+    ? project.projectUrl
+    : withBasePath(project.projectUrl);
 
   return (
     <article className="surface-card soft-shadow flex h-full flex-col overflow-hidden">
@@ -36,12 +45,13 @@ export function LabProjectCard({ project }: LabProjectCardProps) {
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <a
-            href={project.projectUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={href}
+            {...(external
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
             className="focus-ring cta-primary inline-flex min-h-11 items-center justify-center rounded-full bg-[#173126] px-5 text-sm font-medium text-[#F7F2E9] transition-colors hover:bg-[#23382D]"
           >
-            Посмотреть проект
+            {ctaLabel}
           </a>
           {detailHref ? (
             <Link

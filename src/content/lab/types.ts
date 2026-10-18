@@ -38,10 +38,12 @@ export type LabProject = {
   typeLabel: string;
   category: LabCategoryId;
   summary: string;
-  /** Absolute URL of the live project */
+  /** Absolute URL or same-site path of the live project */
   projectUrl: string;
   imageSrc: string;
   imageAlt: string;
+  /** Primary CTA on the card / detail hero. Default: «Посмотреть проект» */
+  ctaLabel?: string;
   /**
    * Soft status for demos / experiments — never “archive” or “finished”.
    * Omit for projects without a special status line.

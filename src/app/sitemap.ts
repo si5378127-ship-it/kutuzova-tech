@@ -15,6 +15,7 @@ const routes = [
   "/lab",
   "/lab/kutuzova-tech",
   "/lab/granicy-i-opora",
+  "/lab/gde-ya",
   "/about",
   "/contact",
   "/audit",
