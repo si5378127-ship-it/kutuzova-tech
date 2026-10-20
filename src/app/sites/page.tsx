@@ -5,7 +5,6 @@ import { CaseCard } from "@/components/CaseCard";
 import { CTAButton } from "@/components/CTAButton";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Hero } from "@/components/Hero";
-import { PortraitPlaceholder } from "@/components/PortraitPlaceholder";
 import { ProblemCard } from "@/components/ProblemCard";
 import { ProductCard, RouteCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -250,8 +249,19 @@ export default function SitesPage() {
       <section className="bg-bg py-16 sm:py-20">
         <div className="container-page grid items-center gap-10 lg:grid-cols-[0.75fr_1.25fr]">
           <div className="mx-auto w-full max-w-[280px] lg:mx-0">
-            {/* TODO: replace with Anastasia portrait */}
-            <PortraitPlaceholder caption="Анастасия Кутузова" />
+            <figure className="relative">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.35rem] border border-border soft-shadow">
+                <Image
+                  src={withBasePath(
+                    "/images/anastasia-kutuzova-sites-about.webp",
+                  )}
+                  alt="Анастасия Кутузова — психолог и создатель цифровых систем"
+                  fill
+                  sizes="(max-width: 1024px) 280px, 280px"
+                  className="object-cover object-top"
+                />
+              </div>
+            </figure>
           </div>
           <SectionHeading title={c.about.title} description={c.about.text} />
         </div>

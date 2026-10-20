@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { PortraitPlaceholder } from "@/components/PortraitPlaceholder";
+import Image from "next/image";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TextLink } from "@/components/TextLink";
+import { withBasePath } from "@/lib/paths";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -16,8 +17,18 @@ export default function AboutPage() {
     <section className="bg-bg py-16 sm:py-24">
       <div className="container-page grid items-start gap-10 lg:grid-cols-[0.75fr_1.25fr]">
         <div className="mx-auto w-full max-w-[280px] lg:mx-0">
-          {/* TODO: replace with Anastasia portrait */}
-          <PortraitPlaceholder caption="Анастасия Кутузова" />
+          <figure className="relative">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.35rem] border border-border soft-shadow">
+              <Image
+                src={withBasePath("/images/anastasia-kutuzova-sites-about.webp")}
+                alt="Анастасия Кутузова — психолог и коуч"
+                fill
+                priority
+                sizes="(max-width: 1024px) 280px, 280px"
+                className="object-cover object-top"
+              />
+            </div>
+          </figure>
         </div>
         <div>
           <SectionHeading
