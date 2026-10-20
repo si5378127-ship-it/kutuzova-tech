@@ -9,6 +9,7 @@ import { ProblemCard } from "@/components/ProblemCard";
 import { ProductCard, RouteCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SevenPointsGrid } from "@/components/SevenPointsGrid";
+import { TextLink } from "@/components/TextLink";
 import { homeContent } from "@/content/home";
 import { sitesCases } from "@/content/sites-cases";
 import { sevenPoints } from "@/content/seven-points";
@@ -243,6 +244,22 @@ export default function SitesPage() {
               />
             ))}
           </div>
+          <aside className="panel-light mt-10 max-w-2xl p-6 sm:p-8">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-gold-muted">
+              Дополнительная витрина
+            </p>
+            <h3 className="heading-serif mt-3 text-2xl text-ink">
+              Лаборатория проектов
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">
+              Лендинги, боты, приложения, квизы и другие цифровые решения — чтобы
+              увидеть разнообразие форматов разработки. Демонстрационные проекты
+              отмечены отдельно и не смешиваются с клиентскими кейсами.
+            </p>
+            <div className="mt-5">
+              <TextLink href="/lab/">Открыть лабораторию →</TextLink>
+            </div>
+          </aside>
         </div>
       </section>
 

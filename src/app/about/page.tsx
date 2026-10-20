@@ -46,6 +46,7 @@ export default function AboutPage() {
             Раздел будет расширен без выдуманных фактов, сертификатов и цифр.
           </p>
           <div className="mt-10 flex flex-wrap gap-6">
+            <TextLink href="/lab/">Лаборатория проектов →</TextLink>
             <TextLink href="/">На главную →</TextLink>
             <TextLink href="/contact">Связаться →</TextLink>
           </div>
