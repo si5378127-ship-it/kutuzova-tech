@@ -3,7 +3,7 @@ import type { PortfolioCategory, PortfolioProject } from "./types";
 /** Filter labels — display order on /sites/. */
 export const portfolioCategories: readonly PortfolioCategory[] = [
   { id: "sites-landings", label: "Сайты и лендинги" },
-  { id: "quizzes", label: "Квизы" },
+  { id: "quizzes", label: "Квизы и интерактивные решения" },
   { id: "apps-tools", label: "Приложения и инструменты" },
   { id: "ai-assistants", label: "ИИ-помощники" },
 ] as const;
@@ -135,6 +135,24 @@ export const portfolioProjects: readonly PortfolioProject[] = [
     imageSrc: "/images/portfolio/elena-quiz-home.webp",
     imageAlt: "Стартовый экран квиза визажиста Елены Филимоновой",
     projectUrl: "https://elena-makeup-quiz.vercel.app/",
+    indexingNote: indexingPrepared,
+  },
+  {
+    id: "tvoy-krasnyy",
+    slug: "tvoy-krasnyy",
+    title: "Твой красный",
+    category: "quizzes",
+    format: "Интерактивное бьюти-приложение",
+    task: "Вовлечь посетителя в подбор оттенка красной помады: попробовать образ на своём фото или продолжить без загрузки снимка.",
+    features: [
+      "Загрузка фотографии или селфи",
+      "Выбор из пяти оттенков красной помады",
+      "Предпросмотр образа",
+      "Можно продолжить без фотографии",
+    ],
+    imageSrc: "/images/portfolio/tvoy-krasnyy-home.webp",
+    imageAlt: "Стартовый экран интерактивного приложения «Твой красный»",
+    projectUrl: "https://tvoy-krasnyy.vercel.app/",
     indexingNote: indexingPrepared,
   },
   {
