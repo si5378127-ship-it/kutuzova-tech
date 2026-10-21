@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { AuditStep } from "@/components/AuditStep";
-import { CaseCard } from "@/components/CaseCard";
 import { CTAButton } from "@/components/CTAButton";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Hero } from "@/components/Hero";
+import { PortfolioGallery } from "@/components/PortfolioGallery";
 import { ProblemCard } from "@/components/ProblemCard";
 import { ProductCard, RouteCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SevenPointsGrid } from "@/components/SevenPointsGrid";
 import { homeContent } from "@/content/home";
-import { sitesCases } from "@/content/sites-cases";
+import {
+  portfolioCategories,
+  portfolioProjects,
+} from "@/content/portfolio";
 import { sevenPoints } from "@/content/seven-points";
 import { withBasePath } from "@/lib/paths";
 import { buildMetadata } from "@/lib/seo";
@@ -223,26 +226,17 @@ export default function SitesPage() {
         </div>
       </section>
 
-      <section className="bg-bg-alt py-16 sm:py-20">
+      <section id="portfolio" className="bg-bg-alt py-16 sm:py-20">
         <div className="container-page">
           <SectionHeading
             title={c.cases.title}
             description={c.cases.text}
             className="mb-10"
           />
-          <div className="grid gap-6 lg:grid-cols-2">
-            {sitesCases.map((item) => (
-              <CaseCard
-                key={item.id}
-                title={item.card.title}
-                industry={item.card.industry}
-                summary={item.card.summary}
-                imageSrc={item.card.imageSrc}
-                imageAlt={item.card.imageAlt}
-                detailsHref={`/sites/${item.slug}/`}
-              />
-            ))}
-          </div>
+          <PortfolioGallery
+            projects={portfolioProjects}
+            categories={portfolioCategories}
+          />
         </div>
       </section>
 
