@@ -124,8 +124,8 @@ export const brandHomeContent = {
         title: "Kutuzova.Tech",
         category: "Сайты",
         summary:
-          "Собственный лендинг о создании сайтов и цифровых решений для психологов и помогающих специалистов.",
-        href: "https://kutuzovatech.lovable.app/" as string | undefined,
+          "Собственный лендинг с чат-ботом о создании сайтов и цифровых решений.",
+        href: "https://kutuzovatech.vercel.app/" as string | undefined,
       },
       {
         id: "magic-art",

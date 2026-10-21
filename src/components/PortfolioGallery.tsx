@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CaseCard } from "@/components/CaseCard";
+import { PortfolioProjectCard } from "@/components/PortfolioProjectCard";
 import type {
   PortfolioCategory,
   PortfolioCategoryId,
@@ -70,18 +70,7 @@ export function PortfolioGallery({
       {visible.length > 0 ? (
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {visible.map((project) => (
-            <CaseCard
-              key={project.id}
-              title={project.title}
-              industry={project.industry}
-              summary={project.summary}
-              imageSrc={project.imageSrc}
-              imageAlt={project.imageAlt}
-              detailsHref={project.detailsHref}
-              projectUrl={
-                project.detailsHref ? undefined : project.projectUrl
-              }
-            />
+            <PortfolioProjectCard key={project.id} project={project} />
           ))}
         </div>
       ) : (
