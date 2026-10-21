@@ -39,6 +39,9 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <Link
           href={project.href}
           className="focus-ring mt-6 inline-flex text-sm text-gold-muted underline-offset-4 hover:text-green-deep hover:underline"
+          {...(project.href.startsWith("http")
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
         >
           Смотреть подробнее →
         </Link>
