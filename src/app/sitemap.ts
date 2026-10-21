@@ -12,6 +12,7 @@ const routes = [
   "/art",
   "/sites",
   "/sites/tvernefteregion",
+  "/lab",
   "/about",
   "/contact",
   "/audit",
