@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { CaseCard } from "@/components/CaseCard";
+import { PortfolioGallery } from "@/components/PortfolioGallery";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TextLink } from "@/components/TextLink";
-import { sitesCases } from "@/content/sites-cases";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Кейсы",
+  title: "Кейсы и портфолио",
   description:
-    "Примеры работы со структурой, текстами, путём заявки и поисковой понятностью сайтов.",
+    "Сайты, цифровые инструменты и ИИ-проекты — подтверждённые материалы без выдуманных метрик.",
   path: "/cases",
 });
 
@@ -18,24 +17,14 @@ export default function CasesPage() {
       <div className="container-page">
         <SectionHeading
           as="h1"
-          title="Кейсы"
-          description="Подтверждённые проекты — без выдуманных цифр посещаемости и продаж. Главный акцент: как меняется путь клиента от интереса до разговора с менеджером."
+          title="Портфолио"
+          description="Подтверждённые проекты — без выдуманных цифр посещаемости и продаж. Смотрите сайты, цифровые инструменты и (когда появятся) ИИ-помощники."
         />
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {sitesCases.map((item) => (
-            <CaseCard
-              key={item.id}
-              title={item.card.title}
-              industry={item.card.industry}
-              summary={item.card.summary}
-              imageSrc={item.card.imageSrc}
-              imageAlt={item.card.imageAlt}
-              detailsHref={`/sites/${item.slug}/`}
-            />
-          ))}
+        <div className="mt-10">
+          <PortfolioGallery />
         </div>
         <div className="mt-10">
-          <TextLink href="/sites/">Смотреть раздел сайтов →</TextLink>
+          <TextLink href="/sites/#portfolio">Смотреть раздел сайтов →</TextLink>
         </div>
       </div>
     </section>

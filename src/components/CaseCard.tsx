@@ -36,6 +36,9 @@ export function CaseCard({
 }: CaseCardProps) {
   const href = detailsHref || projectUrl;
   const previewMode = Boolean(summary);
+  const external = Boolean(projectUrl && !detailsHref);
+  const linkClassName =
+    "focus-ring mt-5 inline-flex text-sm text-gold-muted underline-offset-4 hover:underline";
 
   return (
     <article
@@ -94,14 +97,20 @@ export function CaseCard({
           </>
         )}
         {href ? (
-          <Link
-            href={href}
-            className="focus-ring mt-5 inline-flex text-sm text-gold-muted underline-offset-4 hover:underline"
-            target={projectUrl ? "_blank" : undefined}
-            rel={projectUrl ? "noopener noreferrer" : undefined}
-          >
-            Смотреть подробнее →
-          </Link>
+          external ? (
+            <a
+              href={href}
+              className={linkClassName}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Смотреть подробнее →
+            </a>
+          ) : (
+            <Link href={href} className={linkClassName}>
+              Смотреть подробнее →
+            </Link>
+          )
         ) : null}
       </div>
     </article>

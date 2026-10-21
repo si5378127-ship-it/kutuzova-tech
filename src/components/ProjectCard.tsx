@@ -14,11 +14,19 @@ type ProjectCardProps = {
   className?: string;
 };
 
+function isExternalHref(href: string): boolean {
+  return /^https?:\/\//i.test(href);
+}
+
 /**
  * Neutral project card — sites, psychology products, art series, digital tools.
  * Do not invent results or testimonials.
  */
 export function ProjectCard({ project, className }: ProjectCardProps) {
+  const external = project.href ? isExternalHref(project.href) : false;
+  const linkClassName =
+    "focus-ring mt-6 inline-flex text-sm text-gold-muted underline-offset-4 hover:text-green-deep hover:underline";
+
   return (
     <article
       className={cn(
@@ -36,12 +44,20 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         {project.summary}
       </p>
       {project.href ? (
-        <Link
-          href={project.href}
-          className="focus-ring mt-6 inline-flex text-sm text-gold-muted underline-offset-4 hover:text-green-deep hover:underline"
-        >
-          Смотреть подробнее →
-        </Link>
+        external ? (
+          <a
+            href={project.href}
+            className={linkClassName}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Смотреть подробнее →
+          </a>
+        ) : (
+          <Link href={project.href} className={linkClassName}>
+            Смотреть подробнее →
+          </Link>
+        )
       ) : (
         <p className="mt-6 text-sm text-ink-dim">Материалы появятся позже</p>
       )}
